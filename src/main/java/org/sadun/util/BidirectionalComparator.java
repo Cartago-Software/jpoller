@@ -4,9 +4,10 @@ import java.io.File;
 import java.util.Comparator;
 
 /**
- * 
+ * Copyright (C) 1999, 2000 Cristiano Sadun. This software is released under LGPL.
  *
  * @author Cristiano Sadun
+ * 
  */
 public abstract class BidirectionalComparator implements Comparator {
     

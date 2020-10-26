@@ -3,6 +3,8 @@ package org.sadun.util.polling;
 import java.io.File;
 
 /**
+ * Copyright (C) 1999, 2000 Cristiano Sadun. This software is released under LGPL.
+ *
  * Clients implementing this interface and registering with {@link
  * DirectoryPoller#addPollManager(org.sadun.util.polling.PollManager)
  * DirectoryPoller.addPollManager()} receive method calls

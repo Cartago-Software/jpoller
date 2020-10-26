@@ -3,7 +3,12 @@ package org.sadun.util.polling;
 import com.deltax.util.listener.ExceptionListener;
 import com.deltax.util.listener.ExceptionSignal;
 import com.deltax.util.listener.Signal;
-
+/**
+ * Copyright (C) 1999, 2000 Cristiano Sadun. This software is released under GPL.
+ *
+ * @author Cristiano Sadun
+ * 
+ */
 class DefaultListener implements ExceptionListener {
 
     private PollManager mgt;

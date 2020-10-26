@@ -21,6 +21,8 @@ import com.deltax.util.listener.BaseSignalSourceThread;
 import com.deltax.util.listener.ExceptionSignal;
 
 /**
+ * Copyright (C) 1999, 2000 Cristiano Sadun. This software is released under LGPL.
+ *
  * A Thread class to periodically poll the contents of one or more directories.
  * External asynchronous processes may put some files in one of the controlled directories,
  * and the poller can be used to detect their arrival.

@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * Copyright (C) 1999, 2000 Cristiano Sadun. This software is released under LGPL.
+ *
  * Indicates that the poller has found a file. Note that an {@link FileSetFoundEvent
  * FileSetFoundEvent} containing the same file is always notified before this.
  *

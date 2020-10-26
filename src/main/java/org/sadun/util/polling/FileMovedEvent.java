@@ -5,6 +5,8 @@ import java.io.File;
 import org.sadun.util.MovedFile;
 
 /**
+ * Copyright (C) 1999, 2000 Cristiano Sadun. This software is released under LGPL.
+ *
  * Indicates that the poller has performed an automatic move of a
  * polled file. Can be signalled only if the autoMove move
  * is active (see {@link DirectoryPoller DirectoryPoller class description}).

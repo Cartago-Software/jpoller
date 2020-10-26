@@ -1,8 +1,9 @@
 package org.sadun.util;
 
 import java.io.File;
-
 /**
+ * Copyright (C) 1999, 2000 Cristiano Sadun. This software is released under LGPL.
+ * 
  * A class to encapsulate the concept of a file which has been moved from
  * a path to another, which simplify inversion of the operation.
  * <p>
