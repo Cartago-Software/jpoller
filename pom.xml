@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.sadun</groupId>
+	<artifactId>sadun-jpoller</artifactId>
+	<version>1.5.2-CARTAGO</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<licenses>
+		<license>
+			<name>LGPL version 2.1</name>
+			<url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>sadun</id>
+			<name>Cristiano Sadun</name>
+			<email>cristianosadun@hotmail.com</email>
+			<url>http://jpoller.sourceforge.net/</url>
+			<roles>
+				<role>author</role>
+				<role>developer</role>
+				<role>architect</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>jreed</id>
+			<name>Jason Reed</name>
+			<email>j.reed@cartago.com</email>
+			<url>https://github.com/jreed-cartago</url>
+			<organization>Cartago Software GmbH</organization>
+			<organizationUrl>https://www.cartago.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+	<dependencies>
+		<dependency>
+			<groupId>org.sadun</groupId>
+			<artifactId>sadun-util</artifactId>
+			<version>1.13.0-CARTAGO</version>
+		</dependency>
+	</dependencies>
+</project>
