@@ -29,17 +29,15 @@ import com.deltax.util.listener.ExceptionSignal;
  * To communicate results, the thread notifies events to any registered listener (see below). Notably, if any files are "found", a {@link FileSetFoundEvent FileSetFoundEvent} event is notified.
  * <p>
  * A {@link java.io.FilenameFilter java.io.FilenameFilter} can be provided at construction to identify the files to look for. Besides, the poller can be set to run in two different time-based filtering modes (disabled by default), which select only files satisfying the user-given filter and
- * <p>
  * <ul>
  * <li>whose <i>last modification time</i><a href="#note"><sup>*</sup></a> (<b>LMF</b>) is greater than the time of the last polling <i>(default)</i>
  * <p>
- * <font size=-1>(Only files added to the directory after the last polling pass are selected)</font>
+ * (Only files added to the directory after the last polling pass are selected)
  * <p>
  * <i>or</i>
- * <p>
  * <li>whose <b>LMF</b> is greater than the higher <b>LMF</b> rilevated in the file set selected in the last polling pass (or 0 for the first pass).
  * <p>
- * <font size=-1>(Only files which are newer than the newer file already polled are selected)</font>
+ * (Only files which are newer than the newer file already polled are selected)
  * </ul>
  * <p>
  * Use {@link DirectoryPoller#setTimeBased(boolean) setTimeBased()} and {@link DirectoryPoller#isTimeBased() isTimeBased()} to enable the time-based mode and {@link DirectoryPoller#setPollingTimeBased(boolean) setPollingTimeBased()} and {@link DirectoryPoller#isPollingTimeBased() isPollingTimeBased()} to select the specific subtype of time-based mode.
@@ -64,13 +62,13 @@ import com.deltax.util.listener.ExceptionSignal;
  * The poller has finished to look in the directory set, and is going to sleep
  * </ul>
  * <p>
- * Any object implementing the {@link com.deltax.util.lf.Listener com.deltax.Listener} interface can be registered and be notified of these events. However, a predefined listener, {@link DefaultListener DefaultListener} is provided, which dispatches events to an object implementing the {@link PollManager PollManager} interface, and a base implementation of {@link PollManager PollManager}, {@link BasePollManager BasePollManager} is provided as well.
+ * Any object implementing the com.deltax.util.lf.Listener com.deltax.Listener interface can be registered and be notified of these events. However, a predefined listener, DefaultListener DefaultListener is provided, which dispatches events to an object implementing the PollManager PollManager interface, and a base implementation of PollManager PollManager, BasePollManager BasePollManager is provided as well.
  * <p>
- * The simplest way to receive events from the poller is therefore to create a class extending {@link BasePollManager BasePollManager} overriding the proper method(s) and register it to the directory poller by using {@link DirectoryPoller#addPollManager(PollManager) addPollManager()}.
+ * The simplest way to receive events from the poller is therefore to create a class extending BasePollManager BasePollManager overriding the proper method(s) and register it to the directory poller by using DirectoryPoller#addPollManager(PollManager) addPollManager().
  * <p>
- * The order in which file events are received can be controlled by providing a {@link java.util.Comparator} object which assigns an order to the file sets read on each cycle and assigning it by {@link #setFilesSortComparator(Comparator)}. By default, no order is imposed, i.e. the file events will be fired in an arbitrary order, depending on the operating system. (Two pre-packaged comparators {@link DirectoryPoller.ModificationTimeComparator} and {@link DirectoryPoller.FileSizeComparator} are provided by this class).
+ * The order in which file events are received can be controlled by providing a {@link java.util.Comparator} object which assigns an order to the file sets read on each cycle and assigning it by {@link #setFilesSortComparator(Comparator)}. By default, no order is imposed, i.e. the file events will be fired in an arbitrary order, depending on the operating system. (Two pre-packaged comparators DirectoryPoller.ModificationTimeComparator and DirectoryPoller.FileSizeComparator are provided by this class).
  * <p>
- * <i>Note</i>: listeners will receive events <b><i>asynchronously</i></b> with respect to the poller thread. Therefore, if file processing is performed without moving the file out of the polled directory, the polling interval should be big enough to allow such processing to complete, or the same file may be notified more than once (expecially if time-based polling is disabled). <a name="automove">
+ * <i>Note</i>: listeners will receive events <b><i>asynchronously</i></b> with respect to the poller thread. Therefore, if file processing is performed without moving the file out of the polled directory, the polling interval should be big enough to allow such processing to complete, or the same file may be notified more than once (expecially if time-based polling is disabled).
  * <p>
  * The version 1.2 of the class adds a new runtime mode - the <b>autoMove</b> mode. When running in this mode, the poller automatically moves all the files found in a controlled directory to an associated directory (which is <i>not</i> polled) <i>before</i> notifying the listeners and/or the pollmanager. The events notified will refer to the <i>new</i> location of the file.
  * <p>
@@ -84,9 +82,9 @@ import com.deltax.util.listener.ExceptionSignal;
  * <p>
  * If not, the poller will automatically associate to each controlled directory a subdirectory whose name is defined by the public constant {@link DirectoryPoller#DEFAULT_AUTOMOVE_DIRECTORY DirectoryPoller.DEFAULT_AUTOMOVE_DIRECTORY}. The poller will attempt to create the associated directory, if necessary - and on failure, an ExceptionSignal is sent to the listeners, and the poller shuts down.
  * <p>
- * Note that ExceptionSignals are sent only when the auto-move mode is enabled. </a>
+ * Note that ExceptionSignals are sent only when the auto-move mode is enabled.
  * <p>
- * <a name="note">(*) as returned by <tt>File.lastModified()</tt>.</a>
+ * (*) as returned by File.lastModified(),
  * @author C. Sadun (patched by Doug.Liao@fnf.com)
  * @version 1.4.4
  */
@@ -153,7 +151,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	/**
 	 * The name of subdirectory automatically associated by the poller to any controlled directory for the autoMode mode, unless {@link DirectoryPoller#setAutoMoveDirectory(java.io.File, java.io.File) setAutoMoveDirectory()} is explicitly called before starting the poller.
 	 * <p>
-	 * The current value is &quot;<b><tt>received</tt></b>&quot;
+	 * The current value is &quot;<b>received</b>
 	 */
 	public static final String DEFAULT_AUTOMOVE_DIRECTORY = "received";
 	
@@ -331,7 +329,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	 * Create a poller over the given directory, using the given filter.
 	 * <p>
 	 * SubDirectories are automatically filtered.
-	 * @param dir a directory
+	 * @param directory a directory
 	 * @param filter a filter for files to look up
 	 */
 	public DirectoryPoller(File directory, FilenameFilter filter)
@@ -344,7 +342,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	 * Create a poller over the given directory, which will match any file.
 	 * <p>
 	 * SubDirectories are automatically filtered.
-	 * @param dir a directory
+	 * @param directory a directory
 	 */
 	public DirectoryPoller(File directory)
 	{
@@ -371,7 +369,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	 * SubDirectories are automatically filtered.
 	 * <p>
 	 * Before starting the poller, a single call to {@link DirectoryPoller#setDirectories(java.io.File[])} must be done to bind the poller to a specific directory.
-	 * @param filter a filter for files to look up
+	 * 
 	 */
 	public DirectoryPoller()
 	{
@@ -399,8 +397,9 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	 * Create a poller over the given directory, using the given filter and time-based filtering as well (see class comment).
 	 * <p>
 	 * SubDirectories are automatically filtered.
-	 * @param dir a directory
+	 * @param directory a directory
 	 * @param filter a filter for files to look up
+	 * @param timeBased determines if the selection is time based
 	 */
 	public DirectoryPoller(File directory, FilenameFilter filter, boolean timeBased)
 	{
@@ -416,6 +415,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	 * <p>
 	 * Before starting the poller, a single call to {@link DirectoryPoller#setDirectories(java.io.File[])} must be done to bind the poller to a specific directory.
 	 * @param filter a filter for files to look up
+	 * @param timeBased as boolean
 	 */
 	public DirectoryPoller(FilenameFilter filter, boolean timeBased)
 	{
@@ -525,7 +525,8 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	 * <p>
 	 * If no directory is associated by {@link DirectoryPoller#setAutoMoveDirectory(java.io.File, java.io.File) setAutoMoveDirectory()}, the subdirectory {@link DirectoryPoller#DEFAULT_AUTOMOVE_DIRECTORY DEFAULT_AUTOMOVE_DIRECTORY} is associated automatically.
 	 * @param directory the directory for which the associated "automove" directory is requested
-	 * @exception IllegalArgumentException if <tt>directory</tt> is not under control of the poller
+	 * @exception IllegalArgumentException if directory is not under control of the poller
+	 * @return File as the the directory
 	 */
 	public File getAutoMoveDirectory(File directory) throws IllegalArgumentException
 	{
@@ -545,8 +546,8 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	 * This method can be called only if the poller has not started yet.
 	 * @param directory the controlled directory
 	 * @param autoMoveDirectory the directory associated to the controlled directory
-	 * @exception IllegalArgumentException if <tt>directory</tt> is not a controlled directory
-	 * @exception IllegalStateException
+	 * @exception IllegalArgumentException if directory is not a controlled directory
+	 * @exception IllegalStateException if the service is in an illegal state.
 	 */
 	public void setAutoMoveDirectory(File directory, File autoMoveDirectory) throws IllegalArgumentException, IllegalStateException
 	{
@@ -625,7 +626,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	 * Reset the base time for the given directory.
 	 * <p>
 	 * It's irrelevant if time-based filtering is not enabled (see class comment).
-	 * @param the directory for which to set the base time
+	 * @param directory the directory for which to set the base time
 	 * @param time the new base time
 	 * @exception IllegalArgumentException if the given directory is not under control of the poller
 	 */
@@ -656,7 +657,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	 * Return the current base time for the given directory.
 	 * <p>
 	 * The returned value is unpredictable if time-based filtering is not enabled (see class comment).
-	 * @param the directory for which to get the base time
+	 * @param directory for which to get the base time
 	 * @exception IllegalArgumentException if the given directory is not under control of the poller
 	 * @return the current base time, if time-based filtering is enabled
 	 */
@@ -673,6 +674,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	
 	/**
 	 * Return <b>true</b> if the poller is time based, and uses last-polling time as a basis for the lookup (see class comment)
+	 * @return true if the poller is time based
 	 */
 	public boolean isPollingTimeBased()
 	{
@@ -718,8 +720,8 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	}
 	
 	/**
-	 * Set the poll interval. The poller sleeps for <tt>pollInterval</tt> milliseconds and then performs a lookup in the bound directories. See class comments for notes.
-	 * @param pollInterfval the poll interval
+	 * Set the poll interval. The poller sleeps for pollInterval milliseconds and then performs a lookup in the bound directories. See class comments for notes.
+	 * @param pollInterval the poll interval
 	 */
 	public void setPollInterval(long pollInterval)
 	{
@@ -748,6 +750,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	 * Adds on {@link PollManager PollManager} to the poller, which will be notified on polling events.
 	 * <p>
 	 * You may add many poll managers, but there is no support for inter-poll manager coordination, so if a PollManager deletes/moves a polled file, the others will still receive the associated event, but may not be able to perform proper processing.
+	 * @param pm as PollManager
 	 */
 	public void addPollManager(PollManager pm)
 	{
@@ -1060,6 +1063,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	
 	/**
 	 * Get the current filter
+	 * @return FilenameFilter object
 	 */
 	public FilenameFilter getFilter()
 	{
@@ -1092,7 +1096,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	 * The comparator receives File objects and decides on their respective order.
 	 * <p>
 	 * Two pre-packaged comparators {@link DirectoryPoller.ModificationTimeComparator} and {@link DirectoryPoller.FileSizeComparator} are provided by this class.
-	 * @param filesSortComparator
+	 * @param filesSortComparator as Comparator
 	 */
 	public void setFilesSortComparator(Comparator filesSortComparator)
 	{
@@ -1110,6 +1114,7 @@ public class DirectoryPoller extends BaseSignalSourceThread implements Terminabl
 	
 	/**
 	 * Set the value of the BypassLockedFiles property. If the property is true, locked files will be ignored in automove mode.
+	 * @param supportSlowTransfer as boolean
 	 */
 	public void setBypassLockedFiles(boolean supportSlowTransfer)
 	{

@@ -41,7 +41,8 @@ public interface PollManager
 	public void fileSetFound(FileSetFoundEvent evt);
 	
 	/**
-	 * If the automove mode is active, is invoked for each automatic move operation executed by the poller.
+	 * If the automove mode is active, is invoked for each automatic move operation executed by the poller
+	 * @param evt as the FileMovedEvent
 	 */
 	public void fileMoved(FileMovedEvent evt);
 	
