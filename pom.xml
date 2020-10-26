@@ -11,6 +11,37 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+	<licenses>
+		<license>
+			<name>LGPL version 2.1</name>
+			<url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>sadun</id>
+			<name>Cristiano Sadun</name>
+			<email>cristianosadun@hotmail.com</email>
+			<url>http://jpoller.sourceforge.net/</url>
+			<roles>
+				<role>author</role>
+				<role>developer</role>
+				<role>architect</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>jreed</id>
+			<name>Jason Reed</name>
+			<email>j.reed@cartago.com</email>
+			<url>https://github.com/jreed-cartago</url>
+			<organization>Cartago Software GmbH</organization>
+			<organizationUrl>https://www.cartago.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
 	<dependencies>
 		<dependency>
 			<groupId>org.sadun</groupId>
